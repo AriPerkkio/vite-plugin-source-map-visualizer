@@ -1,0 +1,25 @@
+{
+  "name": "vite-plugin-source-map-visualizer",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.mjs",
+      "types": "./src/index.d.ts"
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "node test/example.test.mjs",
+    "open": "open .vite-source-map-visualizer/report.html"
+  },
+  "packageManager": "pnpm@8.15.9",
+  "peerDependencies": {
+    "vite": ">=4"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}
