@@ -1,5 +1,9 @@
 # vite-plugin-source-map-visualizer
 
+> Vite plugin for generating source map visualizations of transform results
+
+[demo.webm](https://github.com/user-attachments/assets/f2068541-7140-4e13-9305-994bfefdfd79)
+
 ## Install
 
 ```bash
