@@ -2,7 +2,7 @@
 
 > Vite plugin for generating source map visualizations of transform results
 
-[demo.webm](https://github.com/user-attachments/assets/f2068541-7140-4e13-9305-994bfefdfd79)
+<img src="https://github.com/user-attachments/assets/e22e1559-9b5f-48a2-912d-b3f59c6be9cd" width="420px" />
 
 ## Install
 
