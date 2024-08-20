@@ -1,17 +1,20 @@
 import fs from "node:fs/promises";
 import { join } from "node:path";
+import type { Plugin } from "vite";
 
-import { toVisualizer } from "./generate-link.mjs";
-import { script, style } from "./report.mjs";
+import { toVisualizer } from "./generate-link.js";
+import { script, style } from "./report.js";
+
+interface Result {
+  filename: string;
+  hash: string;
+  ssr: boolean;
+}
 
 const outDir = join(process.cwd(), ".vite-source-map-visualizer");
 
-/** @typedef { {filename: string, hash: string, ssr: boolean } } Result */
-
-/** @returns {import("vite").Plugin} */
-export function sourcemapVisualizer() {
-  /** @type { Result[] } */
-  const results = [];
+export function sourcemapVisualizer(): Plugin {
+  const results: Result[] = [];
 
   return {
     name: "source-map-visualizer",
@@ -27,7 +30,7 @@ export function sourcemapVisualizer() {
       const hash = toVisualizer({ code, map });
       const filename = id;
 
-      results.push({ filename, hash, ssr: options.ssr || false });
+      results.push({ filename, hash, ssr: options?.ssr || false });
     },
 
     async buildEnd() {
@@ -38,11 +41,7 @@ export function sourcemapVisualizer() {
   };
 }
 
-/**
- * @param {Result[]} results
- * @param {string} root
- */
-function generateHTML(results, root) {
+function generateHTML(results: Result[], root: string) {
   // prettier-ignore
   return `
 <!DOCTYPE html>

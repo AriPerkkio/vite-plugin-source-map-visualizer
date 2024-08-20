@@ -7,7 +7,7 @@ export function script() {
   if (setting === "dark" || (prefersDark && setting !== "light"))
     document.documentElement.dataset.theme = "dark";
 
-  const themeToggle = document.querySelector("button#theme-toggle");
+  const themeToggle = document.querySelector("button#theme-toggle")!;
   themeToggle.addEventListener("click", () => {
     const current = document.documentElement.dataset.theme;
     const next = current === "dark" ? "light" : "dark";
@@ -16,17 +16,17 @@ export function script() {
     localStorage.setItem("theme", next);
   });
 
-  const url = new URL(window.location);
+  const url = new URL(window.location.href);
   const filename = url.searchParams.get("filename");
 
   if (filename) {
-    /** @type {HTMLIFrameElement} */
-    const iframe = document.querySelector("iframe#source-map-visualizer");
+    const iframe = document.querySelector(
+      "iframe#source-map-visualizer" as "iframe"
+    )!;
     iframe.src = `https://evanw.github.io/source-map-visualization${url.hash}`;
     iframe.style.display = "block";
 
-    /** @type {HTMLDetailsElement} */
-    const fileList = document.querySelector("details#files");
+    const fileList = document.querySelector("details#files" as "details")!;
     fileList.open = false;
   }
 }

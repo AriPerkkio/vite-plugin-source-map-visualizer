@@ -4,22 +4,27 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./src/index.mjs",
-      "types": "./src/index.d.ts"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
-    "test": "node test/example.test.mjs",
-    "open": "open .vite-source-map-visualizer/report.html"
+    "build": "rm -rf ./dist && tsc --project tsconfig.build.json",
+    "test": "tsx test/example.test.ts",
+    "open": "open .vite-source-map-visualizer/report.html",
+    "typecheck": "tsc --noEmit"
   },
   "packageManager": "pnpm@8.15.9",
   "peerDependencies": {
     "vite": ">=4"
   },
   "devDependencies": {
+    "@types/node": "^22.4.1",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4",
     "vite": "^5.4.0"
   }
 }

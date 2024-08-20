@@ -1,3 +1,4 @@
 node_modules
+dist
 .vite-source-map-visualizer
 .DS_store
