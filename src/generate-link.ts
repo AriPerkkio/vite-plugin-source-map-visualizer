@@ -29,7 +29,9 @@
  *
  */
 
-export function toVisualizer(transformResult) {
+import type { TransformResult } from "vite";
+
+export function toVisualizer(transformResult: TransformResult) {
   const code = transformResult.code;
   const map = JSON.stringify(transformResult.map);
   const encoder = new TextEncoder();

@@ -2,7 +2,7 @@ import { readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
 
-import { sourcemapVisualizer } from "../src/index.mjs";
+import { sourcemapVisualizer } from "../src/index.js";
 
 const FIXTURES = fileURLToPath(new URL("./fixtures", import.meta.url).href);
 const FILES = readdirSync(FIXTURES).map((file) => `${FIXTURES}/${file}`);
