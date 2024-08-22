@@ -5,16 +5,32 @@ import type { Plugin } from "vite";
 import { toVisualizer } from "./generate-link.js";
 import { script, style } from "./report.js";
 
+interface Options {
+  /** Filename for the report. Defaults to `report.html` */
+  filename?: string;
+
+  /** Directory for the output. Defaults to `.vite-source-map-visualizer` */
+  outDir?: string;
+}
+
 interface Result {
   filename: string;
   hash: string;
   ssr: boolean;
 }
 
-const outDir = join(process.cwd(), ".vite-source-map-visualizer");
-
-export function sourcemapVisualizer(): Plugin {
+/**
+ * Generate HTML report for inspecting the transformed files in https://evanw.github.io/source-map-visualization/
+ */
+export function sourcemapVisualizer(options?: Options): Plugin {
   const results: Result[] = [];
+
+  const outDir = join(
+    process.cwd(),
+    options?.outDir || ".vite-source-map-visualizer"
+  );
+
+  const reportName = options?.filename || "report.html";
 
   return {
     name: "source-map-visualizer",
@@ -34,7 +50,7 @@ export function sourcemapVisualizer(): Plugin {
     },
 
     async buildEnd() {
-      const filename = `${outDir}/report.html`;
+      const filename = `${outDir}/${reportName}`;
       const html = generateHTML(results, filename);
       await fs.writeFile(filename, html, "utf8");
     },
