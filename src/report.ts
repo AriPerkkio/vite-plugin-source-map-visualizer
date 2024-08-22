@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 
+/* v8 ignore start -- This is not executed by tests */
 export function script() {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const setting = localStorage.getItem("theme");
@@ -30,6 +31,7 @@ export function script() {
     fileList.open = false;
   }
 }
+/* v8 ignore stop */
 
 export function style() {
   return readFileSync(new URL("./styles.css", import.meta.url), "utf8");
