@@ -1,10 +1,9 @@
 import { existsSync, readdirSync, rmSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { expect, onTestFinished, test } from "vitest";
+import { afterEach, expect, onTestFinished, test } from "vitest";
 import { createServer } from "vite";
 
 import { sourcemapVisualizer } from "../src/index.js";
-import { afterEach } from "node:test";
 
 afterEach(() => {
   rmSync(".vite-source-map-visualizer", { force: true, recursive: true });

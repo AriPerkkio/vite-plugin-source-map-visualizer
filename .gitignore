@@ -3,4 +3,5 @@ dist
 coverage
 .vite-source-map-visualizer
 .custom-report-directory
+.test-plugin
 .DS_store

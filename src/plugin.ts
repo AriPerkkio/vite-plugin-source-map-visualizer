@@ -5,6 +5,8 @@ import type { Plugin } from "vite";
 import { toVisualizer } from "./generate-link.js";
 import { script, style } from "./report.js";
 
+const PLUGIN_NAME = "source-map-visualizer";
+
 interface Options {
   /** Filename for the report. Defaults to `report.html` */
   filename?: string;
@@ -33,12 +35,30 @@ export function sourcemapVisualizer(options?: Options): Plugin {
   const reportName = options?.filename || "report.html";
 
   return {
-    name: "source-map-visualizer",
+    name: PLUGIN_NAME,
     enforce: "post",
 
     async config() {
       await fs.rm(outDir, { force: true, recursive: true });
       await fs.mkdir(outDir);
+    },
+
+    configResolved(config) {
+      try {
+        const index = config.plugins.findIndex(
+          (plugin) => plugin.name === PLUGIN_NAME
+        );
+        // @ts-expect-error -- types are readonly
+        const plugin = config.plugins.splice(index, 1)[0];
+
+        // @ts-expect-error -- types are readonly
+        config.plugins.push(plugin);
+      } catch (error) {
+        console.error(
+          `${PLUGIN_NAME} failed to force itself as last Vite plugin`
+        );
+        throw error;
+      }
     },
 
     transform(code, id, options) {
