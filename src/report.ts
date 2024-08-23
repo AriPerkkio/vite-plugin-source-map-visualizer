@@ -17,6 +17,12 @@ export function script() {
     localStorage.setItem("theme", next);
   });
 
+  const menu = document.querySelector("button#menu")!;
+  menu.addEventListener("click", () => {
+    const fileList = document.querySelector("details#files" as "details")!;
+    fileList.open = !fileList.open;
+  });
+
   const url = new URL(window.location.href);
   const filename = url.searchParams.get("filename");
 

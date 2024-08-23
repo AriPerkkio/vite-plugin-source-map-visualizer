@@ -61,6 +61,20 @@ Filename for the report. Defaults to `report.html`.
 
 Directory for the output. Defaults to `.vite-source-map-visualizer`.
 
+### `formatName`
+
+Format name of the files. For example to remove `process.cwd()`:
+
+```ts
+export default defineConfig({
+  plugins: [
+    sourcemapVisualizer({
+      formatName: (filename) => filename.replace(process.cwd(), "/<root>"),
+    }),
+  ],
+});
+```
+
 ## Credits
 
 Special thanks to:
