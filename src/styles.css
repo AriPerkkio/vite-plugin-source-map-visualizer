@@ -95,6 +95,16 @@ td {
   padding: 1.5rem 1rem;
 }
 
+.center {
+  text-align: center;
+}
+
+svg.icon {
+  fill: var(--text);
+  height: 2rem;
+  width: 2rem;
+}
+
 iframe {
   height: 100%;
   margin: 1rem;

@@ -114,6 +114,7 @@ function generateHTML(results: Result[], root: string) {
           <tr>
             <th>File</th>
             <th>Transform mode</th>
+            <th>Link</th>
           </tr>
         </thead>
 
@@ -127,6 +128,11 @@ function generateHTML(results: Result[], root: string) {
               </td>
               <td>
                 ${result.ssr ? "SSR" : "Web"}
+              </td>
+              <td class="center">
+                <a title="Open in source-map-visualization" target="_blank" href="https://evanw.github.io/source-map-visualization#${result.hash}">
+                  <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="external-link"><rect width="24" height="24" opacity="0"/><path d="M20 11a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h6a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1z"/><path d="M16 5h1.58l-6.29 6.28a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L19 6.42V8a1 1 0 0 0 1 1 1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-4a1 1 0 0 0 0 2z"/></g></g></svg>
+                </a>
               </td>
             </tr>
           `.trim()).join("\n")}
