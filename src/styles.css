@@ -1,14 +1,16 @@
 :root[data-theme="light"] {
   --text: rgba(60, 60, 67);
-  --text-accaccent: #3451b2;
+  --text-accent: #3451b2;
   --bg: #ffffff;
+  --bg-invert: #1b1b1f;
   --border: #c2c2c4;
 }
 
 :root[data-theme="dark"] {
-  --text-accaccent: #a8b1ff;
+  --text-accent: #a8b1ff;
   --text: rgba(255, 255, 245, 0.86);
   --bg: #1b1b1f;
+  --bg-invert: #ffffff;
   --border: #3c3f44;
 }
 
@@ -46,7 +48,8 @@ h1 {
   margin: 2rem;
 }
 
-button#theme-toggle {
+button#theme-toggle,
+button#menu {
   width: 3rem;
   height: 3rem;
   border: 0;
@@ -55,33 +58,28 @@ button#theme-toggle {
   background-color: transparent;
   position: absolute;
   top: 1rem;
-  right: 1rem;
   cursor: pointer;
+  fill: var(--bg-invert);
 }
 
-#theme-icon-light {
-  fill: #ffffff;
+button#theme-toggle {
+  right: 1rem;
 }
 
-#theme-icon-dark {
-  fill: #1b1b1f;
+button#menu {
+  right: 5rem;
 }
 
 a {
-  color: var(--text-accaccent);
+  color: var(--text-accent);
 }
 
 details#files {
   margin: 2rem;
 }
 
-summary {
-  display: inline-block;
-  list-style: none;
-  color: var(--text-accaccent);
-  text-decoration: underline;
-  cursor: pointer;
-  margin-bottom: 1rem;
+details#files summary {
+  display: none;
 }
 
 table {
