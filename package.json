@@ -16,7 +16,7 @@
   "bugs": "https://github.com/AriPerkkio/vite-plugin-source-map-visualizer",
   "repository": "https://github.com/AriPerkkio/vite-plugin-source-map-visualizer",
   "scripts": {
-    "build": "rm -rf ./dist && tsc --project tsconfig.build.json",
+    "build": "rm -rf ./dist && tsc --project tsconfig.build.json && cp src/*.css dist",
     "test": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },

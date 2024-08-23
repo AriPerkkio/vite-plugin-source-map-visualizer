@@ -50,9 +50,14 @@ export function sourcemapVisualizer(options?: Options): Plugin {
     },
 
     async buildEnd() {
-      const filename = `${outDir}/${reportName}`;
-      const html = generateHTML(results, filename);
-      await fs.writeFile(filename, html, "utf8");
+      try {
+        const filename = `${outDir}/${reportName}`;
+        const html = generateHTML(results, filename);
+        await fs.writeFile(filename, html, "utf8");
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
     },
   };
 }
