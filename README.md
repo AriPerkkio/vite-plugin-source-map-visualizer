@@ -14,7 +14,7 @@ For more detailed plugin debugging tool you might want to check [`vite-plugin-in
 
 <br />
 
-[output.webm](https://github.com/user-attachments/assets/6fb915e4-63bb-4e0b-a31f-38e35256b328)
+[vite-plugin-source-map-visualizer.webm](https://github.com/user-attachments/assets/f93039d9-da22-459d-b933-1a49467e67a9)
 
 <br />
 <br />
