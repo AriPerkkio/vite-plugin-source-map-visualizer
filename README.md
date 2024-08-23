@@ -13,7 +13,9 @@
 For more detailed plugin debugging tool you might want to check [`vite-plugin-inspect`](https://github.com/antfu-collective/vite-plugin-inspect) instead.
 
 <br />
-<img src="https://github.com/user-attachments/assets/e22e1559-9b5f-48a2-912d-b3f59c6be9cd" width="420px" />
+
+[output.webm](https://github.com/user-attachments/assets/6fb915e4-63bb-4e0b-a31f-38e35256b328)
+
 <br />
 <br />
 
