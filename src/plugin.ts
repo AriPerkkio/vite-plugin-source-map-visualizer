@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import { join } from "node:path";
-import type { Plugin } from "vite";
+import type { Logger, Plugin } from "vite";
 
 import { toVisualizer } from "./generate-link.js";
 import { script, style } from "./report.js";
@@ -16,6 +16,9 @@ interface Options {
 
   /** Format name of the transformed file */
   formatName?: (filename: string) => string;
+
+  /** Silence verbose logging. */
+  silent?: boolean;
 }
 
 interface Result {
@@ -28,6 +31,7 @@ interface Result {
  * Generate HTML report for inspecting the transformed files in https://evanw.github.io/source-map-visualization/
  */
 export function sourcemapVisualizer(options?: Options): Plugin {
+  let logger: Logger;
   const results: Result[] = [];
 
   const outDir = join(
@@ -37,6 +41,7 @@ export function sourcemapVisualizer(options?: Options): Plugin {
 
   const reportName = options?.filename || "report.html";
   const formatName = options?.formatName || defaultFormatName;
+  const silent = options?.silent || false;
 
   return {
     name: PLUGIN_NAME,
@@ -48,6 +53,8 @@ export function sourcemapVisualizer(options?: Options): Plugin {
     },
 
     configResolved(config) {
+      logger = config.logger;
+
       try {
         const index = config.plugins.findIndex(
           (plugin) => plugin.name === PLUGIN_NAME
@@ -78,6 +85,10 @@ export function sourcemapVisualizer(options?: Options): Plugin {
         const filename = `${outDir}/${reportName}`;
         const html = generateHTML(results);
         await fs.writeFile(filename, html, "utf8");
+
+        if (!silent) {
+          logger.info(`Report written to ${filename}`);
+        }
       } catch (error) {
         console.error(error);
         throw error;

@@ -63,6 +63,10 @@ Filename for the report. Defaults to `report.html`.
 
 Directory for the output. Defaults to `.vite-source-map-visualizer`.
 
+### `silent`
+
+Silence plugin's verbose logging.
+
 ### `formatName`
 
 Format name of the files:
