@@ -160,7 +160,7 @@ function generateHTML(results: Result[]) {
 }
 
 function defaultFormatName(filename: string) {
-  return decodeURI(filename);
+  return filename.replace(process.cwd(), "");
 }
 
 function escapeHTML(str: string) {

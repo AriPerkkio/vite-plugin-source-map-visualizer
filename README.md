@@ -65,13 +65,13 @@ Directory for the output. Defaults to `.vite-source-map-visualizer`.
 
 ### `formatName`
 
-Format name of the files. For example to remove `process.cwd()`:
+Format name of the files:
 
 ```ts
 export default defineConfig({
   plugins: [
     sourcemapVisualizer({
-      formatName: (filename) => filename.replace(process.cwd(), "/<root>"),
+      formatName: (filename) => filename.replace("src/", "/"),
     }),
   ],
 });
