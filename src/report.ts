@@ -23,18 +23,24 @@ export function script() {
     fileList.open = !fileList.open;
   });
 
-  const url = new URL(window.location.href);
-  const filename = url.searchParams.get("filename");
+  initializePage();
+  addEventListener("hashchange", initializePage);
 
-  if (filename) {
+  function initializePage() {
+    const fileList = document.querySelector("details#files" as "details")!;
     const iframe = document.querySelector(
       "iframe#source-map-visualizer" as "iframe"
     )!;
-    iframe.src = `https://evanw.github.io/source-map-visualization${url.hash}`;
-    iframe.style.display = "block";
 
-    const fileList = document.querySelector("details#files" as "details")!;
-    fileList.open = false;
+    if (window.location.hash) {
+      iframe.src = `https://evanw.github.io/source-map-visualization${window.location.hash}`;
+      iframe.style.display = "block";
+      fileList.open = false;
+    } else {
+      iframe.src = "";
+      iframe.style.display = "none";
+      fileList.open = true;
+    }
   }
 }
 /* v8 ignore stop */
