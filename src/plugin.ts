@@ -76,7 +76,7 @@ export function sourcemapVisualizer(options?: Options): Plugin {
     async buildEnd() {
       try {
         const filename = `${outDir}/${reportName}`;
-        const html = generateHTML(results, filename);
+        const html = generateHTML(results);
         await fs.writeFile(filename, html, "utf8");
       } catch (error) {
         console.error(error);
@@ -86,7 +86,7 @@ export function sourcemapVisualizer(options?: Options): Plugin {
   };
 }
 
-function generateHTML(results: Result[], root: string) {
+function generateHTML(results: Result[]) {
   // prettier-ignore
   return `
 <!DOCTYPE html>
@@ -102,7 +102,7 @@ function generateHTML(results: Result[], root: string) {
 <body>
   <main>
     <h1>
-      <a href="${root}">Vite Source Map Visualizer</a>
+      <a href="#">Vite Source Map Visualizer</a>
     </h1>
 
     <button id="menu" title="Toggle file list">
@@ -130,7 +130,7 @@ function generateHTML(results: Result[], root: string) {
           ${results.map((result) => `
             <tr>
               <td>
-                <a href="${root}?filename=${result.filename}#${result.hash}">
+                <a href="#${result.hash}">
                   ${escapeHTML(result.filename)}
                 </a>
               </td>
