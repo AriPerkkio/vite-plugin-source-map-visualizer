@@ -5,3 +5,4 @@ coverage
 .custom-report-directory
 .test-plugin
 .DS_store
+example
