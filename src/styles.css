@@ -49,7 +49,9 @@ h1 {
 }
 
 button#theme-toggle,
-button#menu {
+button#menu,
+button#json-view-toggle,
+button#visualizer-view-toggle {
   width: 3rem;
   height: 3rem;
   border: 0;
@@ -63,18 +65,23 @@ button#menu {
 }
 
 button#theme-toggle {
-  right: 1rem;
+  right: 2rem;
 }
 
 button#menu {
-  right: 5rem;
+  right: 6rem;
+}
+
+button#json-view-toggle,
+button#visualizer-view-toggle {
+  right: 10rem;
 }
 
 a {
   color: var(--text-accent);
 }
 
-details#files {
+details#files[open] {
   margin: 2rem;
 }
 
@@ -105,5 +112,16 @@ svg.icon {
 
 iframe {
   height: 100%;
-  margin: 1rem;
+  margin: 2rem;
+}
+
+#json-visualizer {
+  margin: 2rem;
+}
+
+#json-visualizer pre {
+  overflow: auto;
+  border: 0.1rem solid var(--border);
+  margin-bottom: 2rem;
+  padding: 2rem;
 }
